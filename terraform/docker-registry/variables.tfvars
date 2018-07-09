@@ -1,0 +1,5 @@
+region = "YOUR AWS REGION"
+secret_key = "YOUR AWS SECRET KEY"
+access_key = "YOUR AWS ACCESS KEY ID"
+ssh_public_key = "YOUR SSH PUBLIC KEY (.pub)"
+dns_zone_id = "YOUR ROUTE53 DNS ZONE ID"
