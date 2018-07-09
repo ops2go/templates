@@ -1,0 +1,12 @@
+- name: task_description
+  telnet:
+    command: 
+    #pause: 1
+    #host: remote_addr
+    #prompts: [u'$']
+    #user: remote_user
+    #timeout: 120
+    #login_prompt: login: 
+    #password: 
+    #port: 23
+    #password_prompt: Password: 

@@ -1,0 +1,17 @@
+- name: task_description
+  openssl_publickey:
+    privatekey_path: 
+    path: 
+    #privatekey_passphrase: 
+    #force: 
+    #format: PEM
+    #selevel: s0
+    #owner: 
+    #group: 
+    #unsafe_writes: 
+    #seuser: 
+    #serole: 
+    #state: present
+    #mode: 
+    #attributes: None
+    #setype: 

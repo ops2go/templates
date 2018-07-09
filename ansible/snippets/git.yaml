@@ -1,0 +1,22 @@
+- name: task_description
+  git:
+    dest: 
+    repo: 
+    #force: no
+    #track_submodules: no
+    #reference: 
+    #accept_hostkey: no
+    #clone: yes
+    #update: yes
+    #ssh_opts: None
+    #bare: no
+    #verify_commit: no
+    #archive: 
+    #recursive: yes
+    #executable: 
+    #remote: origin
+    #refspec: 
+    #umask: 
+    #depth: 
+    #version: HEAD
+    #key_file: None

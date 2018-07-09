@@ -1,0 +1,18 @@
+- name: task_description
+  openssl_privatekey:
+    path: 
+    #force: 
+    #selevel: s0
+    #cipher: 
+    #passphrase: 
+    #owner: 
+    #size: 4096
+    #group: 
+    #unsafe_writes: 
+    #seuser: 
+    #serole: 
+    #state: present
+    #mode: 
+    #attributes: None
+    #type: RSA
+    #setype: 

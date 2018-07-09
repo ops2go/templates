@@ -1,0 +1,43 @@
+- name: task_description
+  openssl_certificate:
+    path: 
+    provider: 
+    #privatekey_passphrase: 
+    #subject_alt_name_strict: 
+    #seuser: 
+    #force: 
+    #csr_path: 
+    #acme_chain: True
+    #extended_key_usage_strict: 
+    #key_usage: 
+    #owner: 
+    #not_before: 
+    #subject: 
+    #subject_strict: 
+    #group: 
+    #selfsigned_version: 3
+    #unsafe_writes: 
+    #has_expired: 
+    #state: present
+    #version: 
+    #selfsigned_digest: sha256
+    #issuer: 
+    #setype: 
+    #key_usage_strict: 
+    #subject_alt_name: 
+    #selevel: s0
+    #selfsigned_not_after: 
+    #acme_challenge_path: 
+    #privatekey_path: 
+    #issuer_strict: 
+    #invalid_at: 
+    #acme_accountkey_path: 
+    #serole: 
+    #extended_key_usage: 
+    #not_after: 
+    #signature_algorithms: 
+    #selfsigned_not_before: 
+    #mode: 
+    #attributes: None
+    #valid_in: 
+    #valid_at: 
