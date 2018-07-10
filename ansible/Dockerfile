@@ -1,17 +1,21 @@
-# Dockerfile for building Ansible image for Alpine 3, with as few additional software as possible.
-#
-# @see https://github.com/gliderlabs/docker-alpine/blob/master/docs/usage.md
-#
-# Version  1.0
-#
+FROM alpine:3.7
 
+# 1. Use any image as your base image, or "scratch"
+# 2. Add fwatchdog binary via https://github.com/openfaas/faas/releases/
+# 3. Then set fprocess to the process you want to invoke per request - i.e. "cat" or "my_binary"
 
-# pull base image
-FROM alpine:3.6
+#ADD https://github.com/openfaas/faas/releases/download/0.8.0/fwatchdog /usr/bin
+#RUN chmod +x /usr/bin/fwatchdog
 
-MAINTAINER William Yeh <william.pjyeh@gmail.com>
+RUN mkdir -p /home/app
 
-
+RUN apk --no-cache add curl \
+    && echo "Pulling watchdog binary from Github." \
+    && curl -sSL https://github.com/openfaas/faas/releases/download/0.8.0/fwatchdog > /usr/bin/fwatchdog \
+    && chmod +x /usr/bin/fwatchdog \
+    && cp /usr/bin/fwatchdog /home/app \
+    && apk del curl --no-cache
+    
 RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     apk --update add sudo                                         && \
     \
@@ -39,8 +43,21 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     echo "===> Adding hosts for convenience..."  && \
     mkdir -p /etc/ansible                        && \
-    echo 'localhost' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts    
+# Add non root user
 
+RUN addgroup -S app && adduser -S -g app app
 
-# default command: display Ansible version
-CMD [ "ansible-playbook", "--version" ]
+RUN chown app /home/app
+
+WORKDIR /home/app
+
+USER app
+
+# Populate example here - i.e. "cat", "sha512sum" or "node index.js"
+ENV fprocess="ansible-playbook"
+# Set to true to see request in function logs
+ENV write_debug="false"
+
+HEALTHCHECK --interval=5s CMD [ -e /tmp/.lock ] || exit 1
+CMD [ "fwatchdog" ]
